@@ -1,0 +1,45 @@
+.divNavBar {
+    background-color:black;
+    display: flex;
+    gap: 20px;
+    width: 100%; 
+
+    align-items: center;
+}
+.about, .home, .create {
+     width: 6vw;
+    height: 4vh;
+    border-radius: 0.3rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.about {
+    background-color: rgb(253, 6, 171);
+}
+.home {
+    background-color: orangered;
+}
+.create {
+    background-color: rgb(0, 253, 0);
+}
+.about:hover{
+    width: 7vw;
+    height: 5vh;
+    transition: 0.4s;
+}
+.home:hover{
+    width: 7vw;
+    height: 5vh;
+    transition: 0.4s;
+}
+.create:hover{
+    width: 7vw;
+    height: 5vh;
+    transition: 0.4s;
+}
+audio {
+
+    width: 10vw;
+    height: 4vh;
+}

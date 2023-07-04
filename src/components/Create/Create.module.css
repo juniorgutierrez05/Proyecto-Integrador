@@ -1,0 +1,61 @@
+.divCreate {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-image: url(../../imagenes/Fondo-Create.jpeg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow: auto;
+}
+.divContenido {
+    width: 70vh;
+    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.767);
+    margin: auto;
+    color: white;
+    border-radius: 15px;
+    
+}
+.title {
+    color: rgba(255, 255, 0, 0.774);
+    font-size: 30px;
+}
+.divName, .divSpecie, .divStatus {
+    padding: 10px;
+}
+.divName label {
+    font-size: 25px;
+    color: orangered;
+}
+
+.divSpecie label {
+    font-size: 25px;
+    color: rgb(9, 255, 9);
+}
+.divStatus label {
+    font-size: 25px;
+    color: rgb(255, 0, 212);
+}
+.divSpecie input, .divName input, .divStatus input {
+    height: 4vh;
+    width: 30vh;
+    display: flex;
+    margin: auto; 
+    background-color: rgba(11, 245, 11, 0.774);
+    border-radius: 10px;
+}
+.button {
+    padding: auto;
+    width: 6vw;
+    height: 4vh;
+    border-radius: 0.3rem;
+    color: black;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(255, 255, 97);
+    margin: auto;
+    text-align: center;
+}

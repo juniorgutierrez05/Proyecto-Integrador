@@ -1,0 +1,27 @@
+.divAbout {
+ height: 100vh;
+ text-align: center;
+ background-image: url(../../imagenes/Fondo-About.jpeg);
+ background-repeat: no-repeat;
+ background-size: cover;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ overflow: auto;
+ 
+}
+.contenido{
+    background-color: rgba(0, 0, 0, 0.555);
+    color: white;
+    width: 100%;
+    padding: 10px;
+   
+}
+.titleAPI {
+    color: rgb(255, 255, 97);
+    font-size: 30px;
+}
+.parr {
+    margin: 20px;
+    font-size: 20px;
+}
