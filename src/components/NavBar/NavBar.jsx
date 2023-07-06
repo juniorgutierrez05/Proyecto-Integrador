@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar/SearchBar"
 import style from "./NavBar.module.css"
-import {Link} from "react-router-dom"
-import AudioPlayer from "react-audio-player"
+import { Link } from "react-router-dom"
+import AudioPlayer from "react-audio-player";
 import audioFile from "../../audios/get-schwifty-rick-and-morty.mp3"
 
 export default function NavBar({onSearch} ){
