@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Card.module.css"
 import {Link} from "react-router-dom"
-import { connect } from "react-redux";
-import { addFav, removeFav} from "../../redux/actions";
-import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import  {addFav, removeFav} from "../../redux/actions"
+
 function Card(props) {
-   const {id, name, status, species, gender, origin, image,character, myFavorites,addFav, removeFav, onClose} = props;
+   const {id, name, status, species, gender, origin, image,character, onClose} = props;
+   const dispatch = useDispatch();
+  const myFavorites = useSelector(state => state.myFavorites);
    const [isFav, setIsFav] = useState(false);
 
    useEffect(() => {
@@ -14,15 +16,15 @@ function Card(props) {
             setIsFav(true);
          }
       });
-   }, [myFavorites]);
+   }, [myFavorites, props.id]);
 
    function handleFavorite() {
       setIsFav((prevIsFav) => {
         if (prevIsFav) {
-          removeFav(character.id.toString()); // Verifica que character no sea undefined antes de utilizar toString()
+          dispatch(removeFav(character.id.toString())); // Verifica que character no sea undefined antes de utilizar toString()
           return false;
         } else {
-          addFav(character); // Verifica que character no sea undefined
+          dispatch(addFav(character)); // Verifica que character no sea undefined
           return true;
         }
       });
@@ -52,17 +54,6 @@ function Card(props) {
          </div>
    );
 }
-const mapStateToProps = (state) => {
-   return {
-     myFavorites: state.myFavorites,
-   };
- };
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-     addFav: (character) => dispatch(addFav(character)),
-     removeFav: (id) => dispatch(removeFav(id)),
-   };
- };
  
- export default connect(mapStateToProps, mapDispatchToProps)(Card);
+ export default Card;

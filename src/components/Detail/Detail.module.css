@@ -5,17 +5,32 @@
     background-image: url("../../imagenes/Fondo-Detail.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+    color: rgb(3, 255, 3);
 }
 .componet {
     margin: auto;
     background-color: rgba(0, 0, 0, 0.548);
-    height: 530px;
+    box-shadow: 0 0 10px rgb(255, 238, 2);
+    height: 560px;
     width: 400px;
     border-radius: 15px;
-    border: 1px solid rgb(0, 255, 0);
+    border: 1px solid rgb(255, 238, 2);
     display: flex;
     flex-direction: column; /* Alinear elementos en columna */
     justify-content: center; /* Centra verticalmente */
    align-items: center;
-
+}
+.status,
+.species,
+.gender,
+.origin {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 0px;
+  text-align: center;
+  padding-block-end: 0%;
+}
+.image {
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(255, 238, 2);
 }

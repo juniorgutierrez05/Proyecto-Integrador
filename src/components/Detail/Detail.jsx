@@ -25,10 +25,10 @@ useEffect(() => {
           <div className={style.componet}>
             <h2>{character.name}</h2>
       <img className={style.image} src={character.image} alt={character.name} />
-      {character.status && <p>Status: {character.status}</p>}
-      {character.species && <p>Species: {character.species}</p>}
-      {character.gender && <p>Gender: {character.gender}</p>}
-      {character.origin && character.origin.name && <p>Origin: {character.origin.name}</p>}
+      {character.status && <p className={style.status}>Status: {character.status}</p>}
+      {character.species && <p className={style.species}>Species: {character.species}</p>}
+      {character.gender && <p className={style.gender}>Gender: {character.gender}</p>}
+      {character.origin && character.origin.name && <p className={style.origin}>Origin: {character.origin.name}</p>}
       </div>
         </div>
     )
