@@ -1,14 +1,27 @@
-export function validate(datos) {
-    const regex = new RegExp(/\S+@\S+\.\S+/);
+export function validate(userData) {
+  const errors = {};
 
-    let incorrect = {};
-    if (datos.email.length <= 4) {
-      incorrect.email = "Username must be 5 characters long at least";
-    } else if (!datos.email.includes("2")) {
-      incorrect.email = "Must includes a 2";
-    } else if (!regex.test(datos.email)) {
-      incorrect.email = "You must enter a valid email";
-    }
-
-    return incorrect;
+  // Validación del email
+  if (!userData.email) {
+    errors.email = "El email es requerido";
+  } else if (userData.email.length > 35) {
+    errors.email = "El email no puede tener más de 35 caracteres";
+  } else if (!validateEmail(userData.email)) {
+    errors.email = "Ingresa un email válido";
   }
+
+  // Validación de la contraseña
+  if (!userData.password) {
+    errors.password = "La contraseña es requerida";
+  } else if (userData.password.length < 6 || userData.password.length > 10) {
+    errors.password = "La contraseña debe tener entre 6 y 10 caracteres";
+  } else if (!/\d/.test(userData.password)) {
+    errors.password = "La contraseña debe contener al menos un número";
+  }
+
+  return errors;
+}
+function validateEmail(email) {
+  const regex = /\S+@\S+\.\S+/;
+  return regex.test(email);
+}

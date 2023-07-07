@@ -3,27 +3,31 @@ import axios from 'axios';
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from "./components/NavBar/NavBar.jsx"
 import { useState, useEffect} from 'react';
-import Image from "./imagenes/Title-rick.and.morty.jpg"
-import { BrowserRouter as Router, Route } from "react-router-dom"
-import About from "./components/About/About"
-import Deatil from './components/Deatil/Deatil';
-import Create from './components/Create/Create';
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import About from "./components/About/About.jsx";
+import Detail from "./components/Detail/Detail.jsx"
+import Create from "./components/Create/Create.jsx";
+import Home from './components/Home/Home.jsx';
 import Form from './components/Form/Form';
-import {Navigate, useLocation} from "react-router-dom"
+import Favorites from "./components/Favorites/Favorites.jsx"
+import {useNavigate, useLocation} from "react-router-dom";
 
 
 function App() {
-   
-   const [access, setAccess] = useState(false);
-   const EMAIL = 'junior.gutierrez@gmail.com';
-   const PASSWORD = 'contraseña';
+   const navigate = useNavigate();
+const [access, setAccess] = useState(false);
+const EMAIL = 'ejemplo@gmail.com';
+const PASSWORD = 'password1';
 
-   function login(userData){
-      if ( userData.password === PASSWORD && userData.email === EMAIL){
-         setAccess(true);
-        
-      }
+function login(userData) {
+   if (userData.password === PASSWORD && userData.email === EMAIL) {
+      setAccess(true);
+      navigate('/home');
    }
+}
+   useEffect(() => {
+      !access && navigate('/');
+   }, [access]);
    
 const [characters, setCharacters] = useState([]);
 function onSearch(id) {
@@ -53,26 +57,18 @@ function handleCharacterCreate(character) {
      });
  };
   const location = useLocation();
-  
-  useEffect(() => {
-   if (access && location.pathname === '/') {
-      return <Navigate to="/home" />;
-   }
-}, [access, location]);
    return (
       <div className='App'>
-      
-       <Router>  
-         {location.pathname !== '/' && <NavBar onSearch={onSearch} />}
-
-
-         <Route exact path="/" render={() => <Form login={login}/>} />
-         <Route path="/home" render={() => <Cards characters={characters} onClose={onClose} />} />
-            <Route path="/about" component={About} />
-            <Route path="/detail/:id" component={Deatil} />
-            <Route path="/create" render={() => <Create onCharacterCreate={handleRandomCharacter} />} />
-
-      </Router>
+       {location.pathname !== '/' && <NavBar onSearch={onSearch} />}
+       
+       <Routes>  
+         <Route path='/' element={<Form login={login}/>}/>
+            <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/create" element={<Create onCharacterCreate={handleRandomCharacter} />}/>
+            <Route path='/favorites' element={<Favorites/>}/>
+      </Routes>
       </div>
    );
 }

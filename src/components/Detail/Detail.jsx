@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import style from "./Deatil.module.css"
+import style from "./Detail.module.css"
 import axios from "axios";
 
 function Deatil(){
@@ -8,15 +8,18 @@ const {id} = useParams();
 const [character, setCharacter] = useState({})
 
 useEffect(() => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-       if (data.name) {
-          setCharacter(data);
-       } else {
-          window.alert('No hay personajes con ese ID');
-       }
+  axios
+    .get(`https://rickandmortyapi.com/api/character/${id}`)
+    .then((response) => {
+      setCharacter(response.data);
+    })
+    .catch((error) => {
+      
+      alert("Error al obtener la información del personaje:");
     });
-    return setCharacter({});
- }, [id]);
+}, [id]);
+
+
     return (
         <div>
             <h2>{character.name}</h2>
@@ -28,4 +31,4 @@ useEffect(() => {
         </div>
     )
 }
-export default Deatil
+export default Deatil;

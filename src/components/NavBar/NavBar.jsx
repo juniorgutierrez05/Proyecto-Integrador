@@ -10,14 +10,17 @@ export default function NavBar({onSearch} ){
     return (
         <div className={style.divNavBar}>
              <SearchBar onSearch={onSearch}  />
-             <Link to="/about">
-             <button className={style.about}>About</button>
-             </Link>
              <Link to="/home">
              <button className={style.home}>Home</button>
              </Link>
              <Link to="/create">
              <button className={style.create}>Create</button>
+             </Link>
+             <Link to="/about">
+             <button className={style.about}>About</button>
+             </Link>
+             <Link to="/favorites">
+             <button className={style.favorites}> Favorites</button>
              </Link>
              <AudioPlayer 
              src={audioFile}

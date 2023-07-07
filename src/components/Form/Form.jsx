@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Form.module.css"
 import Logo from "../../imagenes/Logo.jpeg"
 import {validate} from "./validacion";
@@ -10,23 +10,20 @@ function Form({login}){
     });
     const [errors, setErrors] = useState({})
 
+    useEffect(() => {
+        setErrors(validate(userData));
+      }, [userData]);
+
     function handleChange(event){
         setUserData({
             ...userData,
             [event.target.name]: event.target.value
           })
-          setErrors(
-            validate( 
-            {
-              ...userData,
-              [event.target.name]: event.target.value
-            }))
           
         } 
         function handleSubmit(event){
             event.preventDefault();
-    console.log("submit, tuki");
-    login(userData.email, userData.password);
+            login(userData);
           }
     return(
         <div className={style.divForm} onSubmit={handleSubmit}>
@@ -54,6 +51,10 @@ function Form({login}){
                 type="password"
                 value={userData.password}
                 onChange={handleChange}></input>
+
+                {errors.password ? (
+                <span style={{ color: "red" }}>{errors.password}</span>
+                ) : null}
 
                 <button className={style.button} onClick={handleSubmit}>Submit</button>
             </form>

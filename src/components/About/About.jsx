@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./About.module.css"
 
-function About(){
+export default function About(){
     return(
         <div className={style.divAbout}>
          <div className={style.contenido}> 
@@ -43,4 +43,3 @@ function About(){
         </div>
     )
 }
-export default About
