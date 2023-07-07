@@ -1,0 +1,12 @@
+.divFav {
+    width: 100%;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0%;
+    background-image: url("../../imagenes/Fondo-Favorites.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    overflow: auto;
+}
